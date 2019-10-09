@@ -1,9 +1,14 @@
 const board = [];
 
+function resetPage(){
+  location.reload();
+}
+
 function play(clickedId) {
   const playerSpan = document.getElementById('player');
   const clickedElement = document.getElementById(clickedId);
-
+  
+if (clickedElement.innerText !== 'X' && clickedElement.innertext !== 'O') {
   if (playerSpan.innerText === 'X') {
     playerSpan.innerText = 'O';
     clickedElement.innerText = 'X';
@@ -13,7 +18,12 @@ function play(clickedId) {
     clickedElement.innerText = 'O';
     board[clickedId] = 'O';
   }
-  console.log(board);
+  };
+
+ 
+
+  // RESET BOARD FUNCTION
+
 
   const topLeft = board[0];
   const topCenter = board[1];
@@ -28,38 +38,45 @@ function play(clickedId) {
   // CHECKS ALL WINNING COMBINATIONS
   if (topLeft !== undefined && topLeft === topCenter && topLeft === topRight) {
     alert(`${topLeft} is the winner`);
+    location.reload();
     return;
   }
   if (middleLeft !== undefined && middleLeft === middleCenter && middleLeft === middleRight) {
     alert(`${middleLeft} is the winner`);
+    location.reload();
     return;
   }
   if (bottomLeft !== undefined && bottomLeft === bottomCenter && bottomLeft === bottomRight) {
     alert(`${bottomLeft} is the winner`);
+    location.reload();
     return;
   }
   if (topLeft !== undefined && topLeft === middleLeft && topLeft === bottomLeft) {
     alert(`${topLeft} is the winner`);
+    location.reload();
     return;
   }
   if (topCenter !== undefined && topCenter === middleCenter && topCenter === bottomCenter) {
     alert(`${topCenter} is the winner`);
+    location.reload();
     return;
   }
   if (topRight !== undefined && topRight === middleRight && topRight === bottomRight) {
     alert(`${topRight} is the winner`);
+    location.reload();
     return;
   }
   if (topLeft !== undefined && topLeft === middleCenter && topLeft === bottomRight) {
     alert(`${topLeft} is the winner`);
+    location.reload();
     return;
   }
   if (bottomLeft !== undefined && bottomLeft === middleCenter && bottomLeft === topRight) {
     alert(`${bottomLeft} is the winner`);
+    location.reload();
     return;
   }
 
-  // DETERMINES IF THE BOARD IS FULL, ALERTS WHEN IT IS
   let boardFull = true;
   for (let i = 0; i <= 8; i++) {
     if (board[i] === undefined) {
